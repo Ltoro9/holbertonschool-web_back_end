@@ -1,24 +1,19 @@
 #!/usr/bin/env python3
 '''
-    Function element_length that takes a list
-    lst of strings as argument and returns a list
-    of integers representing the lengths of the
-    corresponding strings
+    Write an asynchronous coroutine that takes in an integer argument
+    (max_delay, with a default value of 10) named wait_random that
+    waits for a random delay between 0 and max_delay
+    (included and float value) seconds and eventually returns it.
 '''
-from typing import Iterable, List, Sequence, Tuple
+import random
+import asyncio
 
 
-# type-annotated function
-def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
+async def wait_random(max_delay: int = 10) -> float:
     '''
-        Returns a list of tuples containing the
-        elements of lst and their lengths
-
-
-        lst: list of strings
-
-
-        return: list of tuples containing the elements
-                of lst and their lengths
+        Receives max_delay in int value
+        Returns a random float
     '''
-    return [(i, len(i)) for i in lst]
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay
